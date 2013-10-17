@@ -2,15 +2,10 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<script type="text/javascript" src="include/js/jquery-1.6.2.min.js"></script>
-		<script type="text/javascript" src="include/js/jquery-ui-1.8.16.min.js"></script>
-		<!-- 		<script type="text/javascript" src="include/js/jquery.notify.js"></script> -->
-		<!-- 		<script type="text/javascript" src="include/js/autosave.js"></script> -->
-		<link type="text/css" rel="stylesheet"
-		href="include/css/cupertino/jquery-ui-1.8.9.css" />
-		<link type="text/css" rel="Stylesheet"
-		<!-- 		href="include/css/jquery.ui.notify.css" /> -->
-		<style>
+		<script type="text/javascript" src="include/js/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript" src="include/js/jquery-ui-1.10.3.min.js"></script>
+		<link type="text/css" rel="stylesheet" href="include/css/cupertino/jquery-ui-1.10.3.min.css" />
+		<style type="text/css" media="screen">
 			body {
 				font-size: 9pt;
 				background-color: #DEEDF7;
@@ -24,7 +19,7 @@
 				float: left;
 				padding-top: 7px;
 			}
-			input, textarea {
+			input[type=text], textarea {
 				margin-top: 4px;
 				padding: 5px;
 				text-shadow: 0px 1px 0px #fff;
@@ -47,7 +42,7 @@
 				-webkit-transition: .2s ease-in-out;
 				-moz-transition: .2s ease-in-out;
 			}
-			input:focus, textarea:focus {
+			input[type=text]:focus, textarea:focus {
 				border: 1px solid #fafafa;
 				-webkit-box-shadow: 0px 0px 6px #007eff;
 				-moz-box-shadow: 0px 0px 6px #007eff;

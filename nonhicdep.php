@@ -1,4 +1,7 @@
 <?php
+
+error_reporting(0);
+
 require_once('./include/php/excel_reader2.php');
 
 // Read DataTypes

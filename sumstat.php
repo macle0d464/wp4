@@ -5,6 +5,8 @@
 
 <?php 
 require_once('./include/php/excel_reader2.php');
+
+error_reporting(0); 
  
 $excel = new Spreadsheet_Excel_Reader("sumstat.xls"); //, 'WINDOWS-1253');
 $x=1;
