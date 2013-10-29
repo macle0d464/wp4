@@ -116,10 +116,10 @@ while ($x <= $excel->sheets[0]['numRows']) {
         $span_arguments = "";
         if ($expand_with_value != "") {
             $hidden_style = "style='display: none'";
-            $span_arguments = "id='q_".$group_with."_sub_$expand_with_value'";
+            $span_arguments = "id='nq_".$group_with."_sub_$expand_with_value'";
         }
         echo "<tr $span_arguments $hidden_style><td>";
-        echo "<label for=\"text_$numbering\"> $indentation $question </td><td> <textarea name='q_$numbering' id='q_$numbering' cols='50' style='height: 50px'></textarea> </td>";  
+        echo "<label for=\"text_$numbering\"> $indentation $question </td><td> <textarea name='nq_$numbering' id='nq_$numbering' cols='50' style='height: 50px'></textarea> </td>";  
         echo "</tr>";
         $previous_group = $group_with;
         $previous_expand = $expand_with_value;
@@ -127,6 +127,24 @@ while ($x <= $excel->sheets[0]['numRows']) {
         $x++; continue;
     }
     // end of new lines     for text box datatype  NK	
+	
+	// new lines for numeric datatype
+    if ($datatype == "PERCENT") {
+        $hidden_style = "";
+        $span_arguments = "";
+        if ($expand_with_value != "") {
+            $hidden_style = "style='display: none'";
+            $span_arguments = "id='nq_".$group_with."_sub_$expand_with_value'";
+        }
+        echo "<tr $span_arguments $hidden_style><td>";
+        echo "<label for=\"percent_$numbering\"> $indentation $question </td><td>&nbsp;<input name='nq_$numbering' id='nq_$numbering' type='text' style='width: 40px' onblur='check_num(this);' /> % </td>";  
+        echo "</tr>";
+        $previous_group = $group_with;
+        $previous_expand = $expand_with_value;
+        $previous_part_num = $partnum;
+        $x++; continue;
+    }	
+	// end of new lines for numeric datatype
 	
 	// new lines for radio box datatype
 	if ($datatype == "RADIOBOX") {

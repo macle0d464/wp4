@@ -36,7 +36,7 @@ while ($x <= $excel->sheets[0]['numRows']) {
 <ul>
 	<li><a href="#page1">Basic info</a></li>
 	<li><a href="#page2">ART and other Meds</a></li>
-	<li><a href="#page3">Adv. events</a></li>
+	<li><a href="#page3">Clinical events and procedures</a></li>
 	<li><a href="#page4">CDC-C</a></li>
 	<li><a href="#page5">Lab tests</a></li>
 	<li><a href="#page6">CD4/HIV-RNA</a></li>
@@ -151,7 +151,25 @@ while ($x <= $excel->sheets[0]['numRows']) {
         $x++; continue;
     }
     // end of new lines     for text box datatype  NK
-		
+
+	// new lines for numeric datatype
+    if ($datatype == "PERCENT") {
+        $hidden_style = "";
+        $span_arguments = "";
+        if ($expand_with_value != "") {
+            $hidden_style = "style='display: none'";
+            $span_arguments = "id='q_".$group_with."_sub_$expand_with_value'";
+        }
+        echo "<tr $span_arguments $hidden_style><td>";
+        echo "<label for=\"percent_$numbering\"> $indentation $question </td><td>&nbsp;<input name='q_$numbering' id='q_$numbering' type='text' style='width: 40px' onblur='check_num(this);' /> % </td>";  
+        echo "</tr>";
+        $previous_group = $group_with;
+        $previous_expand = $expand_with_value;
+        $previous_part_num = $partnum;
+        $x++; continue;
+    }	
+	// end of new lines for numeric datatype    
+    		
 	// new lines for radio box datatype
 	if ($datatype == "RADIOBOX") {
 		$hidden_style = "";
