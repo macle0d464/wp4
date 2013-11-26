@@ -32,12 +32,15 @@ while ($x <= $excel->sheets[0]['numRows']) {
 
 <form id="fnonhicdep">
 
-<!--<div id="nonhicdep_tabs" class="add_shadow_tabs">-->
-<!--<ul>-->
-<!--	<li><a href="#nh_page1"> </a></li>-->
-<!--</ul>-->
-<!--<div id="nh_page1" style="padding: 10px 10px 10px 10px;">-->
-<table>
+<div id="nonhicdep_tabs" class="add_shadow_tabs">
+<ul>
+	<li><a href="#nh_page1">Basic Info</a></li>
+	<li><a href="#nh_page2">Sexual Behavior</a></li>
+	<li><a href="#nh_page3">Other</a></li>
+	<li><a href="#nh_page4">Vertical infections – Paediatric</a></li>	
+</ul>
+<!-- <div id="nh_page1" style="padding: 10px 10px 10px 10px;"> -->
+<!-- <table> -->
 <?php
 
 
@@ -50,6 +53,7 @@ $expand_with_value = "";
 $cellspacing = 5;
 $part = array("1" => "OK", "2" => "", "3" => "", "4" => "", "5" => "");
 $previous_part_num = "1";
+$tabid = 1;
 
 while ($x <= $excel->sheets[0]['numRows']) {
 	$header = trim($excel->val($x, 1));
@@ -68,11 +72,26 @@ while ($x <= $excel->sheets[0]['numRows']) {
 	$partnum_arr = explode(".", $numbering) ;
 	$partnum = $partnum_arr[0] ;
 
+	if ($header == "0") {
+		if ($x == 2) {
+			echo "<div id='nh_page".$tabid++."' style='padding: 10px 10px 10px 10px;'><table>";
+		} else {
+			echo "\n</table></div> \n<div id='nh_page".$tabid++."' style='padding: 10px 10px 10px 10px;'><table>";
+		}
+		$x++; continue;
+	}	
 
+	if ($header == "0" && $question != "Basic Info") {
+		echo "\n</table></div> \n<div id='nh_page".$tabid++."' style='padding: 10px 10px 10px 10px;'><table>";
+		$x++; continue;
+	}
+
+/*
 	if ($previous_part_num != $partnum && $partnum != "") {
 		echo "\n</table><table>";
 //		echo "\n</table></div> \n<div id='page".$partnum."' style='padding: 10px 10px 10px 10px;'><table>";
 	}
+*/
 
 	if ($datatype == "") {
 		$hidden_style = "";
@@ -129,7 +148,7 @@ while ($x <= $excel->sheets[0]['numRows']) {
     // end of new lines     for text box datatype  NK	
 	
 	// new lines for numeric datatype
-    if ($datatype == "PERCENT") {
+    if (($datatype == "NUMERIC") || ($datatype == "NUM_CHECKBOX") || ($datatype == "PERCENT")) {
         $hidden_style = "";
         $span_arguments = "";
         if ($expand_with_value != "") {
@@ -137,7 +156,14 @@ while ($x <= $excel->sheets[0]['numRows']) {
             $span_arguments = "id='nq_".$group_with."_sub_$expand_with_value'";
         }
         echo "<tr $span_arguments $hidden_style><td>";
-        echo "<label for=\"percent_$numbering\"> $indentation $question </td><td>&nbsp;<input name='nq_$numbering' id='nq_$numbering' type='text' style='width: 40px' onblur='check_num(this);' /> % </td>";  
+        echo "<label for=\"percent_$numbering\"> $indentation $question </td><td>&nbsp;<input name='nq_$numbering' id='nq_$numbering' type='text' style='width: 40px' onblur='check_num(this);' />";
+		if ($datatype == "NUM_CHECKBOX") {
+			echo " <input type='checkbox' name='nq_numcheckbox_$numbering' id='nq_numcheckbox_$numbering' onclick='togglebox(this, this.checked); '> Don't know ";
+		}
+		if ($datatype == "PERCENT") {
+			echo " % ";
+		}
+		echo "</td>";  
         echo "</tr>";
         $previous_group = $group_with;
         $previous_expand = $expand_with_value;
@@ -232,7 +258,7 @@ while ($x <= $excel->sheets[0]['numRows']) {
 }
 ?>
 </table>
-<!--</div>-->
-<!--</div>-->
+</div>
+</div>
 
 </form>

@@ -418,6 +418,7 @@
 				});
 				$('#nonhicdep').load('nonhicdep.php', function() {
 //					$("#fnonhicdep").autosave();
+					$("#nonhicdep_tabs").tabs();
 					setTimeout(function() {	restoredata("nonhicdep"); }, 1);
 				});
 
