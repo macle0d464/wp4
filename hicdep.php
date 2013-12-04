@@ -73,7 +73,7 @@ $previous_group = "";
 $previous_expand = "";
 $expand_with_value = "";
 $cellspacing = 5;
-$part = array("1" => "OK", "2" => "", "3" => "", "4" => "", "5" => "");
+// $part = array("1" => "OK", "2" => "", "3" => "", "4" => "", "5" => "",  "6" => "",  "7" => "",  "8" => "",  "" => "",  "10" => "",  "11" => "",  "12" => "");
 $previous_part_num = "1";
 
 while ($x <= $excel->sheets[0]['numRows']) {
