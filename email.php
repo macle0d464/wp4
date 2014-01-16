@@ -18,7 +18,7 @@ mysql_query("set names 'utf8';");
 
 function email($from, $recipients, $subject, $body, $id) {
 
-	$smtphost = "mail.med.uoa.gr";
+	$smtphost = "localhost";
 	$port = "25";
 	//	$smtphost = "ssl://smtp.gmail.com";
 	//	$port = "465";
@@ -97,10 +97,11 @@ function email($from, $recipients, $subject, $body, $id) {
 $from = "Nikos Pantazis <npantaz@med.uoa.gr>";
 $subject = "EuroCoord WP4: Data inventory survey";
 $bcc = "Nikos Pantazis <npantaz@med.uoa.gr>, Nikos Kiourtis <nkiourtis@gmail.com>";
+$deadline_date = "15-02-2014";
 
 echo "<pre>\n";
 
-$result = mysql_query("SELECT * FROM users WHERE emailed='0'; ");
+$result = mysql_query("SELECT * FROM users WHERE emailed='0' AND aa='6'; ");
 for ($i = 0; $i < mysql_num_rows($result); $i++) {
 	$row = mysql_fetch_assoc($result);
 	// print_r($row);
@@ -116,17 +117,18 @@ for ($i = 0; $i < mysql_num_rows($result); $i++) {
 	if ($row['dm2_name'] != "") {
 		$to .= ", " . $row['dm2_name'] . " <" . $row['dm2_email'] . ">";
 	}
-	$cohort_name = $row['cohort_name'];
-	$link = "http://195.134.113.115/wp4/survey.php?id=" . $row['id'];
+	$cohort_name = $row['cohort_name']; 
+	$link = "http://83.212.108.76/wp4/survey.php?id=" . $row['id'];
 	$recipients = array('to' => $to, 'cc' => $cc, 'bcc' => $bcc);
 	$coverletter_body = "Dear $dm_name,<br />\n";
 	$coverletter_body .= "<p>The Data Management and Harmonisation EuroCoord work package (WP4) focuses on ensuring harmonisation and standardised definitions of the data variables captured by the 4 founding networks (CASCADE, COHERE, EuroSIDA and PENTA-ECS).</p>\n";
 	$coverletter_body .= "<p>One of the objectives of WP4 is to conduct a comprehensive inventory of data items and biological material at both network and single cohort level within EuroCoord. This will help assessing feasibility of cross-network projects so that cost estimates and need for additional data collection can be readily identified.</p>\n";
-	$coverletter_body .= "<p>The data inventory takes the format of an online survey. Please find enclosed an introductory document with the instructions on how to complete the survey. As \"$cohort_name\" is participating to at least one of the EuroCoord networks, you as the data manager of this cohort (or some other cohort representative) are kindly requested to complete the survey as soon as possible.</p>\n";
+	$coverletter_body .= "<p>The data inventory takes the format of an online survey. Please find enclosed an introductory document with the instructions on how to complete the survey. As \"$cohort_name\" is participating to at least one of the EuroCoord networks, you as the data manager of this cohort (or some other cohort representative) are kindly requested to complete the survey survey before " . $deadline_date . " at the latest.</p>\n";
 	$coverletter_body .= "<p>To access the survey, please follow this link:<br /><a href='$link'>$link</a></p>\n";
 	$coverletter_body .= "<p>Please read the introductory document before starting filling-in items.</p>\n";
-	$coverletter_body .= "<p>You are receiving this email because you have not responded to previous calls for this survey or because your percentage of completion is very low. If, for any reason, you will not be able to fill-in this survey or need further clarifications/assistance please contact Nikos Pantazis at&nbsp; <a href='mailto:npantaz@med.uoa.gr'>npantaz@med.uoa.gr</a>&nbsp; </p><br />\n";
-	$coverletter_body .= "<p>Kind regards<br /><br />The WP4 team<br />&nbsp;&nbsp;&nbsp; Lead: Jesper Kjær</p>\n";
+	$coverletter_body .= "<p>Note, that if you have participated in this survey before many items may be already filled-in. Please check if any of them should be updated (e.g. number of HIV patients, person-years of follow-up etc.).<p>\n";
+	$coverletter_body .= "<p>Feel free to contact me at&nbsp; <a href='mailto:npantaz@med.uoa.gr'>npantaz@med.uoa.gr</a>&nbsp; for any clarification or assistance.</p><br />\n";
+	$coverletter_body .= "<p>Kind regards<br /><br />The WP4 team<br />&nbsp;&nbsp;&nbsp; Lead: Ashley Olson</p>\n";
 	$coverletter_body .= "<p>Data Inventory team<br />&nbsp;&nbsp;&nbsp; Nikos Pantazis<br />&nbsp;&nbsp;&nbsp; Ashley Olson</p>";
 	// print_r($recipients);
 	// echo $coverletter_body;

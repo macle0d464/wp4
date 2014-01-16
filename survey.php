@@ -283,7 +283,21 @@
                     <br>
                     <div id="alcohol_more" style="display: none">
                       <label for="alcohol_extra"> &nbsp; &nbsp; &nbsp; &nbsp; Please indicate how information alcohol consumption is collected: </label>
-                      <textarea id="alcohol" name="alcohol" cols="50" style="height: 80px" data-important="1"></textarea>
+                      <textarea id="alcohol_extra" name="alcohol_extra" cols="50" style="height: 80px" data-important="1"></textarea>
+                      <br>
+                    </div>
+					
+                    <label for="recruitment" style="height: 30px;">Are your patients recruited outside of Europe?</label>
+                    <div style="margin-top: 5px">
+                        <input type='radio' name='recruitment' id='recruitment' data-important="1" value='0' onchange="toggle_maintab_extra_inv('recruitment_more', this.value);" />
+                        NO &nbsp; <br>
+                        <input type='radio' name='recruitment' id='recruitment' data-important="1" value='1' onchange="toggle_maintab_extra_inv('recruitment_more', this.value);" />
+                        YES &nbsp;
+                    </div>
+                    <br>
+                    <div id="recruitment_more" style="display: none">
+                      <label for="recruitment_extra"> &nbsp; &nbsp; &nbsp; &nbsp; From which countries? </label>
+                      <textarea id="recruitment_extra" name="recruitment_extra" cols="50" style="height: 80px" data-important="1"></textarea>
                       <br>
                     </div>
 					
@@ -706,6 +720,27 @@
 				$("[id = '" + id + ".7']").show();
 				$("[id = '" + id + ".8']").show();
 				$("[id = '" + id + ".9']").show();
+				$("[id = '" + id + ".10']").show();					
+				$("[id = '" + id + ".11']").show();					
+				$("[id = '" + id + ".12']").show();					
+				$("[id = '" + id + ".13']").show();					
+				$("[id = '" + id + ".14']").show();					
+				$("[id = '" + id + ".15']").show();					
+				$("[id = '" + id + ".16']").show();					
+				$("[id = '" + id + ".17']").show();					
+				$("[id = '" + id + ".18']").show();					
+				$("[id = '" + id + ".19']").show();					
+				$("[id = '" + id + ".20']").show();					
+				$("[id = '" + id + ".21']").show();					
+				$("[id = '" + id + ".22']").show();					
+				$("[id = '" + id + ".23']").show();					
+				$("[id = '" + id + ".24']").show();					
+				$("[id = '" + id + ".25']").show();					
+				$("[id = '" + id + ".26']").show();					
+				$("[id = '" + id + ".27']").show();					
+				$("[id = '" + id + ".28']").show();
+				$("[id = '" + id + ".29']").show();					
+				$("[id = '" + id + ".30']").show();															
 				$("[id ^= '" + id + "_sub_" + val + "']").show();
 
 				if($(el).val() != "99") {
@@ -740,6 +775,27 @@
 					$("[id = '" + id + ".7']").show();
 					$("[id = '" + id + ".8']").show();
 					$("[id = '" + id + ".9']").show();
+					$("[id = '" + id + ".10']").show();					
+					$("[id = '" + id + ".11']").show();					
+					$("[id = '" + id + ".12']").show();					
+					$("[id = '" + id + ".13']").show();					
+					$("[id = '" + id + ".14']").show();					
+					$("[id = '" + id + ".15']").show();					
+					$("[id = '" + id + ".16']").show();					
+					$("[id = '" + id + ".17']").show();					
+					$("[id = '" + id + ".18']").show();					
+					$("[id = '" + id + ".19']").show();					
+					$("[id = '" + id + ".20']").show();					
+					$("[id = '" + id + ".21']").show();					
+					$("[id = '" + id + ".22']").show();					
+					$("[id = '" + id + ".23']").show();					
+					$("[id = '" + id + ".24']").show();					
+					$("[id = '" + id + ".25']").show();					
+					$("[id = '" + id + ".26']").show();					
+					$("[id = '" + id + ".27']").show();					
+					$("[id = '" + id + ".28']").show();
+					$("[id = '" + id + ".29']").show();					
+					$("[id = '" + id + ".30']").show();															
 					$("[id ^= '" + id + "_sub_']").show();
 					//		$("[id ^= '" + id + "_sub_" + val + "']").show();
 				} else {
@@ -753,6 +809,27 @@
 					$("[id = '" + id + ".7']").hide();
 					$("[id = '" + id + ".8']").hide();
 					$("[id = '" + id + ".9']").hide();
+					$("[id = '" + id + ".10']").hide();
+					$("[id = '" + id + ".11']").hide();
+					$("[id = '" + id + ".12']").hide();
+					$("[id = '" + id + ".13']").hide();
+					$("[id = '" + id + ".14']").hide();
+					$("[id = '" + id + ".15']").hide();
+					$("[id = '" + id + ".16']").hide();
+					$("[id = '" + id + ".17']").hide();
+					$("[id = '" + id + ".18']").hide();
+					$("[id = '" + id + ".19']").hide();
+					$("[id = '" + id + ".20']").hide();
+					$("[id = '" + id + ".21']").hide();
+					$("[id = '" + id + ".22']").hide();
+					$("[id = '" + id + ".23']").hide();
+					$("[id = '" + id + ".24']").hide();
+					$("[id = '" + id + ".25']").hide();
+					$("[id = '" + id + ".26']").hide();
+					$("[id = '" + id + ".27']").hide();
+					$("[id = '" + id + ".28']").hide();
+					$("[id = '" + id + ".29']").hide();
+					$("[id = '" + id + ".30']").hide();
 				}
 				//
 				//	if ($(el).val() != "99") {
@@ -778,6 +855,27 @@
 				$("[id = '" + id + ".7']").show();
 				$("[id = '" + id + ".8']").show();
 				$("[id = '" + id + ".9']").show();
+				$("[id = '" + id + ".10']").show();					
+				$("[id = '" + id + ".11']").show();					
+				$("[id = '" + id + ".12']").show();					
+				$("[id = '" + id + ".13']").show();					
+				$("[id = '" + id + ".14']").show();					
+				$("[id = '" + id + ".15']").show();					
+				$("[id = '" + id + ".16']").show();					
+				$("[id = '" + id + ".17']").show();					
+				$("[id = '" + id + ".18']").show();					
+				$("[id = '" + id + ".19']").show();					
+				$("[id = '" + id + ".20']").show();					
+				$("[id = '" + id + ".21']").show();					
+				$("[id = '" + id + ".22']").show();					
+				$("[id = '" + id + ".23']").show();					
+				$("[id = '" + id + ".24']").show();					
+				$("[id = '" + id + ".25']").show();					
+				$("[id = '" + id + ".26']").show();					
+				$("[id = '" + id + ".27']").show();					
+				$("[id = '" + id + ".28']").show();
+				$("[id = '" + id + ".29']").show();					
+				$("[id = '" + id + ".30']").show();															
 				$("[id ^= '" + id + "_sub_" + val + "']").show();
 				// console.log($(el));
 				// console.log($(el).parent);
@@ -843,6 +941,37 @@
 				$("[id = '" + id + ".7']").show();
 				$("[id = '" + id + ".8']").show();
 				$("[id = '" + id + ".9']").show();
+				$("[id = '" + id + ".10']").show();					
+				$("[id = '" + id + ".11']").show();					
+				$("[id = '" + id + ".12']").show();					
+				$("[id = '" + id + ".13']").show();					
+				$("[id = '" + id + ".14']").show();					
+				$("[id = '" + id + ".15']").show();					
+				$("[id = '" + id + ".16']").show();					
+				$("[id = '" + id + ".17']").show();					
+				$("[id = '" + id + ".18']").show();					
+				$("[id = '" + id + ".19']").show();					
+				$("[id = '" + id + ".20']").show();					
+				$("[id = '" + id + ".21']").show();					
+				$("[id = '" + id + ".22']").show();					
+				$("[id = '" + id + ".23']").show();					
+				$("[id = '" + id + ".24']").show();					
+				$("[id = '" + id + ".25']").show();					
+				$("[id = '" + id + ".26']").show();					
+				$("[id = '" + id + ".27']").show();					
+				$("[id = '" + id + ".28']").show();
+				$("[id = '" + id + ".29']").show();					
+				$("[id = '" + id + ".30']").show();
+				$("[id = '" + id + ".31']").show();
+				$("[id = '" + id + ".32']").show();
+				$("[id = '" + id + ".33']").show();
+				$("[id = '" + id + ".34']").show();
+				$("[id = '" + id + ".35']").show();
+				$("[id = '" + id + ".36']").show();
+				$("[id = '" + id + ".37']").show();
+				$("[id = '" + id + ".38']").show();
+				$("[id = '" + id + ".39']").show();
+				$("[id = '" + id + ".40']").show();
 				$("[id ^= '" + id + "_sub_" + val + "']").show();
 
 				// calculate_progress();

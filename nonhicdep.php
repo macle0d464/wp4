@@ -38,6 +38,7 @@ while ($x <= $excel->sheets[0]['numRows']) {
 	<li><a href="#nh_page2">Sexual Behavior</a></li>
 	<li><a href="#nh_page3">Other</a></li>
 	<li><a href="#nh_page4">Vertical infections – Paediatric</a></li>	
+	<li><a href="#nh_page5">Samples</a></li>
 </ul>
 <!-- <div id="nh_page1" style="padding: 10px 10px 10px 10px;"> -->
 <!-- <table> -->

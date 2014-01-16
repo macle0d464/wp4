@@ -44,7 +44,7 @@ while ($x <= $excel->sheets[0]['numRows']) {
 	<li><a href="#page8">Viro/sero</a></li>
 	<li><a href="#page9">Death/drop-out</a></li>
 	<li><a href="#page10">Visits</a></li>
-	<li><a href="#page11">Samples</a></li>
+	<!-- <li><a href="#page11">Samples</a></li> -->
 	<li><a href="#page12">Pregnancy/Infants</a></li>
 </ul>
 <div id="page1" style="padding: 10px 10px 10px 10px;">
@@ -169,7 +169,25 @@ while ($x <= $excel->sheets[0]['numRows']) {
         $x++; continue;
     }	
 	// end of new lines for numeric datatype    
-    		
+
+	// new lines for date datatype
+    if ($datatype == "DATE") {
+        $hidden_style = "";
+        $span_arguments = "";
+        if ($expand_with_value != "") {
+            $hidden_style = "style='display: none'";
+            $span_arguments = "id='q_".$group_with."_sub_$expand_with_value'";
+        }
+        echo "<tr $span_arguments $hidden_style><td>";
+        echo "<label for=\"percent_$numbering\"> $indentation $question </td><td>&nbsp;<input name='q_$numbering' id='q_$numbering' type='text' class='dateinput' style='width: 100px' /> </td>";  
+        echo "</tr>";
+        $previous_group = $group_with;
+        $previous_expand = $expand_with_value;
+        $previous_part_num = $partnum;
+        $x++; continue;
+    }	
+	// end of new lines for date datatype    
+	    		
 	// new lines for radio box datatype
 	if ($datatype == "RADIOBOX") {
 		$hidden_style = "";
@@ -272,3 +290,16 @@ while ($x <= $excel->sheets[0]['numRows']) {
 <input type="hidden" id='hicdep_required' value='<?php echo $hicdep_required; ?>'/>
 
 </form>
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		$(".dateinput").datepicker({
+			changeMonth: true,
+			changeYear: true,
+			dateFormat: "yy-mm-dd"
+		}).blur(function() {
+			check_date(this); 
+		});		
+	});
+</script>
+
